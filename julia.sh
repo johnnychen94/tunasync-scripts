@@ -6,5 +6,7 @@ cd "${TUNASYNC_WORKING_DIR}"
 
 export JULIA_STATIC_DIR="$PWD/static"
 export JULIA_CLONES_DIR="$PWD/clones"
+
+find $JULIA_STATIC_DIR/artifact -name '*.tmp.*' -delete
 exec julia -e "using StorageServer; mirror_tarball(\"registries/General\", [\"$BASE_URL\"])"
 
